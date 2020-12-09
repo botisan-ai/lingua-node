@@ -1,0 +1,19 @@
+[package]
+name = "lingua-node"
+version = "0.1.0"
+authors = ["Simon Liang <simon@x-tech.io>"]
+license = "MIT"
+build = "build.rs"
+edition = "2018"
+exclude = ["artifacts.json", "index.node"]
+
+[lib]
+name = "lingua_node"
+crate-type = ["cdylib"]
+
+[build-dependencies]
+neon-build = "0.5.3"
+
+[dependencies]
+neon = "0.5.3"
+lingua = "1.0"
