@@ -1,3 +1,3 @@
 # lingua-node
 
-Wrapper for lingua-rs in NodeJS
+A NodeJS wrapper for [lingua-rs](https://github.com/pemistahl/lingua-rs)
