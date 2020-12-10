@@ -27,11 +27,13 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: install NPM dependencies and build native binary
-      run: yarn
+    - name: install NPM dependencies only
+      run: yarn install --ignore-scripts
+    - name: build native code
+      run: yarn build --release
     - name: remove native built artifact before publishing
-      run: npm run clean:artifact
+      run: yarn clean:artifact
     - name: Package native binary and upload to github
-      run: npm run upload-binary
+      run: yarn upload-binary
       env:
         NODE_PRE_GYP_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

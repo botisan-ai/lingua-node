@@ -19,7 +19,8 @@ jobs:
         node-version: 14.x
     - name: install NPM dependencies only
       run: yarn install --ignore-scripts
-    - run: yarn build:typescript
+    - name: build typescript files
+      run: yarn build:typescript
     - name: Publish to NPM
       run: echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" > .npmrc && npm publish --access=public
       env:
