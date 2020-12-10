@@ -37,7 +37,7 @@
     "format": "prettier --write",
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint --fix",
-    "package": "npm run patch && npm run node-pre-gyp -- package",
+    "package": "npm run patch && node-pre-gyp -- package",
     "patch": "patch-package",
     "postinstall": "node-pre-gyp -- install --update-binary --fallback-to-build=false || npm run build -- --release && npm run build:typescript",
     "start": "DEBUG=lingua-node:* node .",
