@@ -1,0 +1,30 @@
+diff --git a/node_modules/node-pre-gyp/lib/package.js b/node_modules/node-pre-gyp/lib/package.js
+index 4959265..f66ec21 100644
+--- a/node_modules/node-pre-gyp/lib/package.js
++++ b/node_modules/node-pre-gyp/lib/package.js
+@@ -20,6 +20,7 @@ function _package(gyp, argv, callback) {
+     var napi_build_version = napi.get_napi_build_version_from_command_args(argv);
+     var opts = versioning.evaluate(package_json, gyp.opts, napi_build_version);
+     var from = opts.module_path;
++    var pkg_path = package_json.binary.pkg_path || from;
+     var binary_module = path.join(from,opts.module_name + '.node');
+     existsAsync(binary_module,function(found) {
+         if (!found) {
+@@ -34,7 +35,7 @@ function _package(gyp, argv, callback) {
+         };
+         mkdirp(path.dirname(tarball),function(err) {
+             if (err) return callback(err);
+-            packlist({ path: from }).then(function(files) {
++            packlist({ path: pkg_path }).then(function(files) {
+                 var base = path.basename(from);
+                 files = files.map(function(file) {
+                     return path.join(base, file);
+@@ -44,7 +45,7 @@ function _package(gyp, argv, callback) {
+                     gzip: true,
+                     onentry: filter_func,
+                     file: tarball,
+-                    cwd: path.dirname(from)
++                    cwd: path.dirname(pkg_path)
+                 }, files, function(err) {
+                     if (err)  console.error('['+package_json.name+'] ' + err.message);
+                     else log.info('package','Binary staged at "' + tarball + '"');

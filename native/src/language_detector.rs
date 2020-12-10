@@ -18,7 +18,7 @@ declare_types! {
       //   .collect::<Vec<_>>();
 
       let detector = LanguageDetectorBuilder::from_languages(
-        &vec![English, Turkish]
+        &vec![Chinese, English, Turkish, Russian]
       ).build();
 
       Ok(detector)
