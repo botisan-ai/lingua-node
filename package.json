@@ -8,7 +8,7 @@
     "url": "https://github.com/xanthous-tech/lingua-node.git"
   },
   "author": "Simon Liang <simon@x-tech.io>",
-  "license": "APLv2",
+  "license": "Apache-2.0",
   "files": [
     "native",
     "lib"
