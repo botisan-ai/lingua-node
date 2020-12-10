@@ -1,6 +1,6 @@
 {
   "name": "lingua-node",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Wrapper for lingua-rs in NodeJS",
   "main": "lib/index.js",
   "repository": {
@@ -8,9 +8,9 @@
     "url": "https://github.com/xanthous-tech/lingua-node.git"
   },
   "author": "Simon Liang <simon@x-tech.io>",
-  "license": "MIT",
+  "license": "APLv2",
   "files": [
-    "native/index.d.ts",
+    "native",
     "lib"
   ],
   "binary": {
@@ -21,17 +21,10 @@
     "module_path": "./native",
     "pkg_path": "."
   },
-  "dependencies": {
-    "debug": "^4.3.1",
-    "neon-cli": "^0.5.3",
-    "node-pre-gyp": "^0.17.0",
-    "patch-package": "^6.2.2",
-    "threads": "^1.6.3"
-  },
   "scripts": {
     "build": "neon build",
     "build:typescript": "tsc",
-    "clean": "rimraf lib",
+    "clean:javascript": "rimraf lib",
     "clean:artifact": "rimraf native/target && rimraf native/artifacts.json",
     "dev": "npm run build && npm run build:typescript && npm start",
     "format": "prettier --write",
@@ -39,9 +32,16 @@
     "lint:fix": "eslint --fix",
     "package": "npm run patch && node-pre-gyp -- package",
     "patch": "patch-package",
-    "postinstall": "node-pre-gyp -- install --update-binary --fallback-to-build=false || npm run build -- --release && npm run build:typescript",
+    "postinstall": "node-pre-gyp -- install --update-binary --fallback-to-build=false || npm run build -- --release",
     "start": "DEBUG=lingua-node:* node .",
     "upload-binary": "npm run package && node-pre-gyp-github publish"
+  },
+  "dependencies": {
+    "debug": "^4.3.1",
+    "neon-cli": "^0.5.3",
+    "node-pre-gyp": "^0.17.0",
+    "patch-package": "^6.2.2",
+    "threads": "^1.6.3"
   },
   "devDependencies": {
     "@types/debug": "^4.1.5",
