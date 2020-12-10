@@ -1,5 +1,7 @@
 declare namespace Lingua {
-  export function hello(): string;
+  export class LanguageDetector {
+    detectLanguage(text: string): string;
+  }
 }
 
 export = Lingua;

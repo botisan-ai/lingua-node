@@ -1,9 +1,9 @@
 use neon::prelude::*;
 
-fn hello(mut cx: FunctionContext) -> JsResult<JsString> {
-    Ok(cx.string("hello node"))
-}
+mod language_detector;
+
+use language_detector::JsLanguageDetector;
 
 register_module!(mut cx, {
-    cx.export_function("hello", hello)
+    cx.export_class::<JsLanguageDetector>("LanguageDetector")
 });

@@ -47,5 +47,9 @@
     "hooks": {
       "pre-commit": "lint-staged && npm run build && npm run build:typescript"
     }
+  },
+  "volta": {
+    "node": "14.15.1",
+    "yarn": "1.22.10"
   }
 }

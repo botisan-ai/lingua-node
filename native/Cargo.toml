@@ -7,6 +7,10 @@ build = "build.rs"
 edition = "2018"
 exclude = ["artifacts.json", "index.node"]
 
+[[bin]] # Bin to run the test
+name = "test"
+path = "src/test.rs"
+
 [lib]
 name = "lingua_node"
 crate-type = ["cdylib"]
