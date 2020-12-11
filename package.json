@@ -1,6 +1,6 @@
 {
   "name": "lingua-node",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Wrapper for lingua-rs in NodeJS",
   "main": "lib/index.js",
   "repository": {
@@ -15,9 +15,9 @@
   ],
   "binary": {
     "module_name": "index",
-    "host": "https://github.com/xanthous-tech/lingua-node/releases/download/",
-    "remote_path": "{version}",
-    "package_name": "{node_abi}-{platform}-{arch}.tar.gz",
+    "host": "https://x-tech-npm-binaries.s3-us-west-2.amazonaws.com",
+    "remote_path": "./lingua-node/v{version}/{configuration}/",
+    "package_name": "lingua-node-{platform}-{arch}-{node_abi}.tar.gz",
     "module_path": "./native",
     "pkg_path": "."
   },
@@ -26,6 +26,7 @@
     "build:typescript": "tsc",
     "clean:javascript": "rimraf lib",
     "clean:artifact": "rimraf native/target && rimraf native/artifacts.json",
+    "clean:binary": "rimraf build",
     "dev": "npm run build && npm run build:typescript && npm start",
     "format": "prettier --write",
     "lint": "eslint ./src --ext .ts",
@@ -34,7 +35,7 @@
     "patch": "patch-package",
     "postinstall": "node-pre-gyp -- install --update-binary --fallback-to-build=false || npm run build -- --release",
     "start": "DEBUG=lingua-node:* node .",
-    "upload-binary": "npm run package && node-pre-gyp-github publish"
+    "upload-binary": "npm run package && node-pre-gyp publish"
   },
   "dependencies": {
     "debug": "^4.3.1",
@@ -48,10 +49,10 @@
     "@types/node": "14",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
+    "aws-sdk": "^2.808.0",
     "eslint": "^7.15.0",
     "husky": "^4.3.5",
     "lint-staged": "^10.5.3",
-    "node-pre-gyp-github": "^1.4.3",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
     "ts-node": "^9.1.1",
