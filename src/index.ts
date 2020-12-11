@@ -4,7 +4,6 @@ export class LanguageDetector {
   private detector: NativeLanguageDetector;
 
   constructor() {
-    console.log('initializing language detector');
     console.time('language detector init');
     this.detector = new NativeLanguageDetector();
     console.timeEnd('language detector init');
@@ -14,6 +13,3 @@ export class LanguageDetector {
     return this.detector.detectLanguage(text);
   }
 }
-
-const detector = new LanguageDetector();
-setInterval(() => console.log(detector.detectLanguage('hello world')), 10000);
