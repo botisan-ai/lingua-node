@@ -1,6 +1,6 @@
 use neon::prelude::*;
 use lingua::{LanguageDetectorBuilder, Language, LanguageDetector};
-use lingua::Language::{Chinese, English, Turkish, Russian};
+use lingua::Language::{English, German, French, Portuguese, Dutch, Italian, Polish, Russian, Japanese, Chinese};
 
 declare_types! {
   pub class JsLanguageDetector for LanguageDetector {
@@ -18,8 +18,10 @@ declare_types! {
       //   .collect::<Vec<_>>();
 
       let detector = LanguageDetectorBuilder::from_languages(
-        &vec![Chinese, English, Turkish, Russian]
-      ).build();
+        &vec![English, German, French, Portuguese, Dutch, Italian, Polish, Russian, Japanese, Chinese]
+      )
+      .with_minimum_relative_distance(0.1)
+      .build();
 
       Ok(detector)
     }
