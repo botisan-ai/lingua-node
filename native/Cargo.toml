@@ -1,6 +1,6 @@
 [package]
 name = "lingua-node"
-version = "0.1.0"
+version = "0.3.0"
 authors = ["Simon Liang <simon@x-tech.io>"]
 license = "MIT"
 build = "build.rs"
@@ -20,4 +20,4 @@ neon-build = "0.5.3"
 
 [dependencies]
 neon = "0.5.3"
-lingua = "1.1"
+lingua = { git = "https://github.com/lhr0909/lingua-rs", branch = "main" }

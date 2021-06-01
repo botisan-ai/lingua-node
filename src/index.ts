@@ -3,9 +3,9 @@ import { LanguageDetector as NativeLanguageDetector } from '../native';
 export class LanguageDetector {
   private detector: NativeLanguageDetector;
 
-  constructor() {
+  constructor(languages?: string[]) {
     console.time('language detector init');
-    this.detector = new NativeLanguageDetector();
+    this.detector = new NativeLanguageDetector(languages || []);
     console.timeEnd('language detector init');
   }
 
